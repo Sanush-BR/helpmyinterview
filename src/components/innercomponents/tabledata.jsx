@@ -14,7 +14,7 @@ class Carddata extends Component {
   async componentDidMount() {
     try {
       const { data: records } = await http.get(
-        `http://localhost:8000/api${window.location.pathname}`
+        `${process.env.url}/api${window.location.pathname}`
       );
       this.setState({ records });
       const user = jwtDecode(localStorage.getItem("token"));
@@ -33,7 +33,7 @@ class Carddata extends Component {
   handleUpdate = async (record) => {
     // http://localhost:8000/api${window.location.pathname}/${record._id}
     const { data: result } = await http.get(
-      `http://localhost:8000/api${window.location.pathname}/${record._id}`
+      `${process.env.url}/api${window.location.pathname}/${record._id}`
     );
     this.props.history.push(`${window.location.pathname}/${result._id}`);
   };
@@ -45,7 +45,7 @@ class Carddata extends Component {
     this.setState({ records });
     try {
       await http.delete(
-        `http://localhost:8000/api${window.location.pathname}/${record._id}`
+        `${process.env.url}/api${window.location.pathname}/${record._id}`
       );
     } catch (ex) {
       if (ex.response && ex.response.status === 404) {

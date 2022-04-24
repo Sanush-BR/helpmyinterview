@@ -38,7 +38,7 @@ class UpdateForm extends Form {
     //http://localhost:8000/api${window.location.pathname}
     try {
       const { data: record } = await http.get(
-        `http://localhost:8000/api${window.location.pathname}${window.location.pathname}`
+        `${process.env.url}/api${window.location.pathname}${window.location.pathname}`
       );
       this.setState({ data: this.mapToViewModel(record) });
     } catch (ex) {

@@ -1,7 +1,7 @@
 import http from "../services/httpServices";
 // import {apiUrl} from "/config.json";
 
-const apiEndPoint = "http://localhost:8000/api/user";
+const apiEndPoint = `${process.env.url}/api/user`;
 // const apiEndPoint = `${apiUrl}/user`;
 
 export function register(user){
